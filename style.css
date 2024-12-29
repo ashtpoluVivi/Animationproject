@@ -1,0 +1,651 @@
+/* Universal Reset and Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root Variables for Consistent Theming */
+:root {
+    --border-radius: 25px;
+    --blue: #27384e;
+    --pink: #0077b6;
+    --green: #00b4d8;
+    --grey: #90e0ef;
+    --gutter: 2vw 4vw;
+    --text-color: #ffffff;
+    --background-color: #01172c;
+    --accent-color: #00b4d8;
+
+    --hover-accent: #ff6f61;
+    --pulse-effect: #00f5d4;
+}
+
+/* Add animations to color variables */
+@keyframes colorShift {
+    0% {
+        --accent-color: #00b4d8;
+    }
+    50% {
+        --accent-color: #90e0ef;
+    }
+    100% {
+        --accent-color: #00b4d8;
+    }
+}
+
+/* Apply animation to :root for dynamic color changes */
+:root {
+    animation: colorShift 5s infinite alternate ease-in-out;
+}
+
+/* Button or interactive element animation */
+button, a {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 1em 2em;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover, a:hover {
+    background: var(--hover-accent);
+    transform: scale(1.1);
+}
+
+/* Section background animation */
+section {
+    background: linear-gradient(
+        45deg,
+        var(--blue),
+        var(--green),
+        var(--pink)
+    );
+    animation: backgroundShift 10s infinite linear;
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Pulsing effect for specific elements */
+.pulse {
+    display: inline-block;
+    background: var(--pulse-effect);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    animation: pulseAnimation 2s infinite ease-in-out;
+}
+
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Base Styles for HTML and Body */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif; /* Modern and versatile font */
+    line-height: 1.8; /* Slightly increased for improved readability */
+    scroll-behavior: smooth; /* Adds smooth scrolling */
+    transition: background 0.5s ease, color 0.5s ease; /* Smooth color transitions */
+    letter-spacing: 0.5px; /* Slightly spaced text for a sleek look */
+}
+
+/* Add subtle animation to body background on load */
+body {
+    animation: fadeInBackground 2s ease-in-out;
+}
+
+@keyframes fadeInBackground {
+    0% {
+        background: #000000;
+        color: #1a1a1a;
+    }
+    100% {
+        background: var(--background-color);
+        color: var(--text-color);
+    }
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    html,
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+
+/* Selection Styling */
+::selection {
+    background: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Scrollbar Styling */
+body::-webkit-scrollbar {
+    width: 12px; /* Slightly wider for better visibility */
+    background: var(--grey); /* Softer tone for contrast */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--green), var(--blue)); /* Gradient for a modern touch */
+    border-radius: 8px; /* Increased for a smoother look */
+    border: 2px solid var(--background-color); /* Adds a border for a polished effect */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--pink), var(--green)); /* Highlight effect on hover */
+}
+
+/* Container for Consistent Padding */
+.container {
+    padding: var(--gutter);
+    max-width: 1200px;
+    margin: 0 auto; /* Central alignment */
+    border-radius: var(--border-radius); /* Adds subtle rounded corners */
+    background: rgba(0, 0, 0, 0.05); /* Transparent overlay for a layered effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth interactions */
+}
+
+.container:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Responsive Adjustments for Container */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: calc(var(--gutter) / 2); /* Reduce padding for smaller screens */
+        max-width: 90%; /* Wider use of available screen space */
+    }
+}
+
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--grey);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--grey);
+}
+
+/* Buttons with Hover Effects */
+button {
+    background: var(--green);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: var(--pink);
+    transform: translateY(-3px);
+}
+
+/* Cards for Reusable Components */
+.card {
+    background: var(--blue);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    color: var(--text-color);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+/* Footer Styling */
+footer {
+    background: var(--blue);
+    padding: 2rem;
+    text-align: center;
+    color: var(--grey);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Headings Styling */
+h1 {
+    font-size: 4.5rem; /* Scaled for responsiveness */
+    line-height: 1.2;
+    margin: 0;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 3.5rem; /* Adjusted for better hierarchy */
+    margin: 0;
+    color: #f5f0f0;
+}
+
+/* Anchor Links */
+a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Added smooth transition for hover effects */
+}
+
+a:hover {
+    color: #00b4d8; /* Accent color for hover state */
+}
+
+/* Section Styling */
+section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 100px); /* Ensures full-screen sections minus header height */
+    top: 100px;
+    z-index: 2;
+    padding: 2rem; /* Added padding for better spacing */
+    background: linear-gradient(145deg, #01172c, #012a4a); /* Subtle gradient for a modern feel */
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Sticky Section */
+section.sticky {
+    position: sticky;
+    margin-top: 100px;
+    top: 0;
+    z-index: 3;
+    background: #000000;
+    color: #f5f0f0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect for depth */
+}
+
+/* Full-Screen Section */
+section.full-screen {
+    height: 100vh;
+    top: 0;
+    margin-top: 0;
+    z-index: 3;
+    background: #000000;
+    color: #f5f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centered text for better presentation */
+    transition: background 0.5s ease; /* Smooth transition for dynamic effects */
+}
+
+section.full-screen:hover {
+    background: #01497c; /* Subtle hover effect */
+}
+
+/* Utility Classes for Responsiveness */
+.text-center {
+    text-align: center;
+}
+
+.padding-large {
+    padding: 3rem;
+}
+
+.margin-top {
+    margin-top: 2rem;
+}
+
+/* Media Queries for Mobile Devices */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 1.5rem;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    section.full-screen {
+        height: auto;
+        padding: 2rem;
+    }
+}
+
+
+/* navigation */
+/* An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element. 
+flex	Displays an element as a block-level flex container.
+
+Gutters are the gaps between column content, created by horizontal padding .
+*/
+
+/* General Styling */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    --border-radius: 100px;
+    --blue: #012A4A;
+    --pink: #01497C;
+    --green: #2C7DA0;
+    --grey: #A9D6E5;
+    --gutter: 3.125vw 6.25vw;
+    margin: 0;
+    padding: 0;
+    background: #011524;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Syne', sans-serif;
+}
+
+/* Navigation */
+nav {
+    z-index: 5;
+    text-transform: uppercase;
+    background-color: #011524;
+    border: 1px solid #c8e6f1f2;
+    border-radius: 1.5em;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 2em);
+    height: 4rem;
+    margin: 1em auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 1em;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: #ffffff;
+    font-family: 'Space Mono', monospace;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00d4ff;
+}
+
+/* About Section */
+section.about {
+    display: flex;
+    gap: 2rem;
+    margin-top: 6rem;
+    padding: var(--gutter);
+}
+
+section.about .empty {
+    flex-basis: 37.5vw;
+    background: var(--grey);
+    border-radius: var(--border-radius);
+    transition: flex-basis 1s cubic-bezier(0, 0.9, 0.4, 0.99);
+}
+
+section.about figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 56.25vw;
+    margin: 0;
+    max-width: 62.5vw;
+    transition: flex-basis 1s cubic-bezier(0, 0.9, 0.4, 0.99);
+}
+
+section.about figure img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+section.about article {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+section.about article .title {
+    flex: 2;
+    display: flex;
+    align-items: flex-end;
+    background: var(--blue);
+    border-radius: var(--border-radius);
+    padding: var(--gutter);
+    color: #ffffff;
+    transition: flex-basis 1s cubic-bezier(0, 0.9, 0.4, 0.99);
+}
+
+section.about article .description {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--pink);
+    border-radius: var(--border-radius);
+    padding: var(--gutter);
+    color: #000000;
+}
+
+/* Service Section */
+section.service {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+section.service article {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+section.service figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 50%;
+    background: var(--green);
+    border-radius: var(--border-radius);
+    padding: 1em;
+    transition: flex-basis 1s cubic-bezier(0, 0.9, 0.4, 0.99);
+}
+
+section.service figure img {
+    width: 40%;
+    border-radius: 10%;
+    transition: transform 0.3s ease;
+}
+
+section.service figure img:hover {
+    transform: scale(1.1);
+}
+
+section.service .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    background-color: #1f1a1c;
+    padding: var(--gutter);
+    border-radius: var(--border-radius);
+}
+
+section.service .text a {
+    font-family: 'Space Mono', monospace;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+section.service .text a:hover {
+    color: var(--pink);
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(-5%); }
+    100% { transform: translateY(5%); }
+}
+
+@keyframes scale {
+    0% { transform: scale(0.75); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(180deg); }
+}
+
+section.service.service-html figure img {
+    animation: float 1s infinite alternate cubic-bezier(0.77, 0.28, 0.42, 0.93);
+}
+
+section.service.service-css figure img {
+    animation: scale 1s infinite alternate cubic-bezier(0.77, 0.28, 0.42, 0.93);
+}
+
+section.service.service-js figure img {
+    animation: rotate 3s infinite alternate cubic-bezier(0.77, 0.28, 0.42, 0.93);
+}
+
+/* Contact Section */
+section.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.87);
+    border-radius: var(--border-radius);
+    border: 1px solid #526538;
+    margin: 2rem auto;
+}
+
+section.contact a {
+    font-size: 3rem;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+section.contact a:hover {
+    color: var(--green);
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    html, body {
+        --border-radius: 50px;
+        --gutter: 4vw;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li {
+        margin-left: 1rem;
+    }
+
+    section.service article {
+        flex-direction: column;
+    }
+
+    section.service figure {
+        flex-basis: 25vh;
+    }
+
+    section.service figure img {
+        width: 50%;
+    }
+
+    section.contact a {
+        font-size: 2rem;
+    }
+}
